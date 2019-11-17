@@ -1,0 +1,2339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+</head>
+<body>
+
+<style type="text/css">
+    th {
+        text-align: center;
+        width: 30%;
+    }
+    td{
+        width: 60%;
+    }
+</style>
+<table class="striped">
+    <tbody>
+        <tr>
+            <th>Weapon</th>
+                <td><h4 id="gunName">-</h4> with <h4><a id="attachmentAmount">x</a> attachments</h1></td>
+        </tr>
+        <tr>
+            <th>Muzzle</th>
+                <td><a id="muzzle">-</a></td>
+        </tr>
+        <tr>
+            <th>Barrel</th>
+                <td><a id="barrel">-</a></td>
+        </tr>
+        <tr>
+            <th>Laser</th>
+                <td><a id="laser">-</a></td>
+        </tr>
+        <tr>
+            <th>Optic</th>
+                <td><a id="optic">-</a></td>
+        </tr>
+        <tr>
+            <th>Stock</th>
+                <td><a id="stock">-</a></td>
+        </tr>
+        <tr>
+            <th>Under Barrel</th>
+                <td><a id="underbarrel">-</a></td>
+        </tr>
+        <tr>
+            <th>Ammo</th>
+                <td><a id="ammo">-</a></td>
+        </tr>
+        <tr>
+            <th>Rear Grip</th>
+                <td ><a id="reargrip">-</a></td>
+        </tr>
+        <tr>
+            <th>Perk</th>
+                <td><a id="perk">-</a></td>
+        </tr>
+    </tbody>
+</table>
+<button style="width: 100%;height: 60px;" class="btn waves-effect waves-light" onclick="randomGunAndAttachemnts()">
+    Random Weapon
+</button>
+<script>
+var myObj, x;
+myObj = {
+  "gunList": [
+    {
+      "Name": "Kilo 141",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "Ammunition": [
+        "50 Rounds Mags",
+        "60 Round Mags",
+        "100 Round Drums"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Ribberized Grip Tape",
+        "Stippled Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "Name": "FAL",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "5mW Laser",
+        "1mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "Ammunition": [
+        "24 Round Mags",
+        "30 Round Mags"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "Name": "M4A1",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "Ammunition": [
+        "50 Rounds Mags",
+        "60 Round Mags",
+        "9mm Para 32-Round Mags",
+        ".458 Socom 10-Round Mags"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Ribberized Grip Tape",
+        "Stippled Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "Name": "FR 556",
+      "Muzzle": [
+        "Flash Guard",
+        "Muzzle Brake",
+        "Tactial Supressor",
+        "Compensator",
+        "Lightweight Supressor",
+        "Monolithic Supressor"
+      ],
+      "Barrel": [
+        "FR 15.9'' Commando",
+        "FR 24.4'' Sniper",
+        "FORGE TAC Ultralight"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "Operator Reflex Sight",
+        "Corp Combat Halo Sight",
+        "Aim-Op Reflex Sight",
+        "Scout Combat Optic",
+        "APX5 Holographic Sight",
+        "Integral Hybrid",
+        "Solozero Optics Mini Reflex",
+        "VLK 3.0x Optic",
+        "4.0x Flip Hybrid",
+        "Viper Reflex Sight",
+        "PBX Holo 7 Sight",
+        "Solozero NVG Enhanced",
+        "Sniper Scope",
+        "Cronen LP945 Mini Reflex",
+        "Monocle Reflex Sight",
+        "Cronen C480 Pro Optic",
+        "G.I. Mini Reflex",
+        "Variable Zoom Scope",
+        "Thermal Hybrid",
+        "Merc Thermal Optic",
+        "Canted Hybrid"
+      ],
+      "Stock": [
+        "FR UltraLight Hallow",
+        "FORGE TAC Ballast Pack",
+        "FFS Tac-Wrap"
+      ],
+      "Underbarrel": [
+        "Commando Foregrip",
+        "M203 Smokescreen",
+        "M203 Incendiary",
+        "Merc Foregrip",
+        "M203 High-explosive",
+        "m203 Concussive",
+        "Tactial Foregrip",
+        "Bipod",
+        "M203 Flash",
+        "12 Gauge Deputy",
+        "Operator Foregrip",
+        "M204 Recon",
+        "Ranger Foregrip"
+      ],
+      "Ammunition": [
+        "50 Rounds Mags",
+        "60 Round Mags"
+      ],
+      "Rear Grip": [
+        "Stippled Grip Tape",
+        "Granulated Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "Recon",
+        "Heavy Hitter",
+        "Frangible Wounding",
+        "Fully Loaded",
+        "Fast Melee",
+        "Mo' Money",
+        "FMJ",
+        "Slight of Hand",
+        "Frangible Disabling",
+        "Presence of Mind"
+      ]
+    },
+    {
+      "Name": "ODEN",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "5mW Laser",
+        "1mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "Ammunition": [
+        "25 Rounds Mags",
+        "30 Round Mags"
+      ],
+      "Rear Grip": [
+        "Stippled Grip Tape",
+        "Granulated Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "Name": "M13",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "Tac Laser",
+        "5mW Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "Ammunition": [
+        "50 Rounds Mags",
+        ".300 Blackout 30-Round Mags",
+        "60 Round Mags"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "Name": "FN Scar 17",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "Ammunition": [
+        "25 Rounds Mags",
+        "30 Round Mags"
+      ],
+      "Rear Grip": [
+        "Stippled Grip Tape",
+        "Granulated Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "Ak-47",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "Ammunition": [
+        "40 Rounds Mags",
+        "5.45x39mm 30-Round Mags",
+        "75 Round Drum Mags"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "Name": "AUG",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "Ammunition": [
+        "32 Rounds Mags",
+        "5.56 NATO 30-Round Mags",
+        "5.56 NATO 60-Round Drums"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Ribberized Grip Tape",
+        "Stippled Grip Tape"
+
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "Name": "P90",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "Ammunition": [],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "MP5",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "Ammunition": [
+        "45 Rounds Mags",
+        "10mm Auto 30-Round Mags"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Ribberized Grip Tape",
+        "Stippled Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "Name": "UZI",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "Ammunition": [
+        "40 Rounds Mags",
+        "50 Round Mags"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "PP19 Bizon",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2"
+      ],
+      "Laser": [
+        "Tac Laser",
+        "1mW Laser",
+        "5mW Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [],
+      "Ammunition": [
+        "84 Round Helical Mags"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "MP7",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "Ammunition": [
+        "50 Rounds Mags",
+        "60 Round Mags"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "Model 680",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "Ammunition": [
+        "Tube Extension",
+        "Slug Rounds"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "Name": "R9-0 Shotgun",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "Barrel": [
+        "1",
+        "2"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "Stock": [
+        "Pump - FFS R9-0 Bulldog",
+        "FTAC Ultralight Pump",
+        "FTAC Close Quarters Pro"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Ammunition": [
+        "Tube Extension",
+        "Slug Rounds"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "725",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "Ammunition": [
+        "Slug Rounds"
+      ],
+      "Rear Grip": [
+        "Tempus SlimGrip",
+        "FORGE TAC Steady Grip",
+        "FORGE TAC Commander"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "Origin 12 Shotgun",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2"
+      ],
+      "Ammunition": [
+        "12 Rounds Mags",
+        "8 Rounds Slugs Mags",
+        "25 Rounds Drum Mags"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Ribberized Grip Tape",
+        "Stippled Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "PKM",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "Ammunition": [
+        "150 Round Belt",
+        "200 Round Belt"
+      ],
+      "Rear Grip": [
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape",
+        "Granulated Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "SA87",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "5mW Laser",
+        "1mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "Ammunition": [
+        "50 Rounds Mags",
+        "60 Rounds Mags"
+      ],
+      "Rear Grip": [
+        "Ribberized Grip Tape",
+        "Granulated Grip Tape",
+        "Stippled Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "M91",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "1mW Laser",
+        "5mW Laser",
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "Ammunition": [
+        "120 Round Belt",
+        "150 Round Belt"
+      ],
+      "Rear Grip": [
+        "Granulated Grip Tape",
+        "Stippled Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Name": "MG34",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "Tac Laser",
+        "5mW Laser",
+        "1mW Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "Ammunition": [
+        "75 Round Belt",
+        "100 Round Belt"
+      ],
+      "Rear Grip": [
+        "Stippled Grip Tape",
+        "Granulated Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+   {
+      "Name": "EBR-14",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "Ammunition": [
+        "15 Round Mags",
+        "20 Round Mags"
+      ],
+      "Rear Grip": [],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+   {
+      "Name": "MK2 Carbine",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "Ammunition": [],
+      "Rear Grip": [
+        "Ribberized Grip Tape",
+        "Stippled Grip Tape",
+        "Granulated Grip Tape"
+
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+   {
+      "Name": "Kar98",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Underbarrel": [
+        "1"
+      ],
+      "Ammunition": [],
+      "Rear Grip": [
+        "Stippled Grip Tape",
+        "Granulated Grip Tape",
+        "Ribberized Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+   {
+      "Name": "Dargunov",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2"
+      ],
+      "Laser": [
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1"
+      ],
+      "Ammunition": [
+        "15 Round Mags",
+        "20 Round Mags"
+      ],
+      "Rear Grip": [],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+   {
+      "Name": "HDR",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Underbarrel": [
+        "1"
+      ],
+      "Ammunition": [
+        "7 Round Mags",
+        "9 Round Mags"
+      ],
+      "Rear Grip": [],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+   {
+      "Name": "AX-50",
+      "Muzzle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Barrel": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Laser": [
+        "Tac Laser"
+      ],
+      "Optic": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "Stock": [
+        "1",
+        "2",
+        "3"
+      ],
+      "Underbarrel": [
+        "1"
+      ],
+      "Ammunition": [
+        "7 Round Mags"
+      ],
+      "Rear Grip": [
+        "Ribberized Grip Tape",
+        "Granulated Grip Tape",
+        "Stippled Grip Tape"
+      ],
+      "Perk": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+   {
+      "Name": "Riot Shield",
+      "Muzzle": [],
+      "Barrel": [],
+      "Laser": [],
+      "Optic": [],
+      "Stock": [],
+      "Underbarrel": [],
+      "Ammunition": [],
+      "Rear Grip": [],
+      "Perk": []
+    }
+  ]
+},
+
+x = myObj.gunList[0];
+
+function randomGunAndAttachemnts(){
+    var randomGun = Math.floor(Math.random() * myObj.gunList.length);
+
+    //between 3 and 5 attachments
+    var randomAttachmentAmount = Math.floor(Math.random() * 3) + 3;
+
+    var finalBarrel = [];
+    var finalAmmo = [];
+    var finalLaser = [];
+    var finalMuzzle = [];
+    var finalOptic = [];
+    var finalPerk = [];
+    var finalGrip = [];
+    var finalStock = [];
+    var finalUnderbarrel = [];
+    var e = 0;
+
+    for (var i = 0; i < randomAttachmentAmount; i++) {
+        e++;
+        if(e > 20){break};
+
+        attachmentCategoryCount = Object.getOwnPropertyNames(myObj.gunList[randomGun]).length;
+        //+1 because "Name" is the fist category
+         randomAttachment = Math.floor(Math.random() * attachmentCategoryCount);
+        // DOESNT WORK => randomAttachment = Math.floor(Math.random() * ((attachmentCategoryCount-1) - 1) + 1) + 1;
+        //randomAttachment = randomAttachmentCategory[Math.floor(Math.random() * (max-min + 1)) + min];    
+        
+        randomAttachmentCategory = myObj.gunList[randomGun][Object.keys(x)[randomAttachment]];
+        randomAttachmentCategoryName = Object.getOwnPropertyNames(myObj.gunList[0])[randomAttachment];
+
+        if(randomAttachmentCategory.length > 0){
+            randomAttachment = randomAttachmentCategory[Math.floor(Math.random() * randomAttachmentCategory.length + 1) -1];    
+        } else{
+            i -= 1;
+            randomAttachment = null;
+        }
+
+        if(randomAttachmentCategoryName === "Muzzle"){
+            if(finalMuzzle.length === 0 ){
+                finalMuzzle.push(randomAttachment);
+            } else{
+                i -=1;
+            }
+        }
+        if(randomAttachmentCategoryName === "Barrel"){
+            if(finalBarrel.length === 0 ){
+                finalBarrel.push(randomAttachment);
+            } else{
+                i -=1;
+            }
+        }
+        if(randomAttachmentCategoryName === "Laser"){
+            if(finalLaser.length === 0 ){
+                finalLaser.push(randomAttachment);
+            } else{
+                i -=1;
+            }
+        }
+        if(randomAttachmentCategoryName === "Optic"){
+            if(finalOptic.length === 0 ){
+                finalOptic.push(randomAttachment);
+            } else{
+                i -=1;
+            }
+        }
+        if(randomAttachmentCategoryName === "Stock"){
+            if(finalStock.length === 0 ){
+                finalStock.push(randomAttachment);
+            } else{
+                i -=1;
+            }
+        }
+        if(randomAttachmentCategoryName === "Underbarrel"){
+            if(finalUnderbarrel.length === 0 ){
+                finalUnderbarrel.push(randomAttachment);
+            } else{
+                i -=1;
+            }
+        }
+        if(randomAttachmentCategoryName === "Ammunition"){
+            if(finalAmmo.length === 0 ){
+                finalAmmo.push(randomAttachment);
+            } else{
+                i -=1;
+            }
+        }
+        if(randomAttachmentCategoryName === "Rear Grip"){
+            if(finalGrip.length === 0 ){
+                finalGrip.push(randomAttachment);
+            } else{
+                i -=1;
+            }
+        }
+        if(randomAttachmentCategoryName === "Perk"){
+            if(finalPerk.length === 0 ){
+                console.log("NEED TO ADD PERK" + randomAttachment)
+                finalPerk.push(randomAttachment);
+            } else{
+                i -=1;
+            }
+        }
+    }
+
+    document.getElementById("muzzle").innerHTML = finalMuzzle;
+    document.getElementById("barrel").innerHTML = finalBarrel;
+    document.getElementById("laser").innerHTML = finalLaser;
+    document.getElementById("optic").innerHTML = finalOptic;
+    document.getElementById("stock").innerHTML = finalStock;
+    document.getElementById("underbarrel").innerHTML = finalUnderbarrel;
+    document.getElementById("ammo").innerHTML = finalAmmo;
+    document.getElementById("reargrip").innerHTML = finalGrip;
+    document.getElementById("perk").innerHTML = finalPerk;
+
+    document.getElementById("attachmentAmount").innerHTML = randomAttachmentAmount;
+    document.getElementById("gunName").innerHTML = myObj.gunList[randomGun].Name;
+}
+
+</script>
+
+</body>
+</html>
